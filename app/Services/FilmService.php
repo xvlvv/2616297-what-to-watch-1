@@ -7,15 +7,15 @@ namespace App\Services;
 use App\Models\Film;
 use App\Data\FilmsRequestData;
 use App\Jobs\ProcessPendingFilm;
-use App\Movie\MovieRepositoryInterface;
+use App\IMDB\IMDBRepositoryInterface;
 use App\Repositories\FilmRepositoryInterface;
 use App\Repositories\GenreRepositoryInterface;
 
-class FilmService
+readonly class FilmService
 {
     public function __construct(
         private FilmRepositoryInterface $filmRepository,
-        private MovieRepositoryInterface $IMDBRepository,
+        private IMDBRepositoryInterface $IMDBRepository,
         private GenreRepositoryInterface $genreRepository,
     ) {
     }
@@ -55,6 +55,10 @@ class FilmService
     public function updateWithIMDB(int $id): void
     {
         $imdbData = $this->IMDBRepository->findById($id);
+
+        if (null === $imdbData) {
+            throw new \Exception('Failed fetching IMDB data');
+        }
 
         if (null !== $imdbData->genre) {
             $this->genreRepository->attachToGenre($id, $imdbData->genre);

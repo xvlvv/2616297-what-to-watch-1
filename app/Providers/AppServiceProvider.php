@@ -5,13 +5,13 @@ namespace App\Providers;
 use App\Models\User;
 use GuzzleHttp\Client;
 use App\Models\Comment;
-use App\Movie\MovieRepository;
+use App\IMDB\IMDBRepository;
 use App\Repositories\FilmRepository;
 use App\Repositories\UserRepository;
 use Illuminate\Support\Facades\Gate;
 use Psr\Http\Client\ClientInterface;
 use App\Repositories\GenreRepository;
-use App\Movie\MovieRepositoryInterface;
+use App\IMDB\IMDBRepositoryInterface;
 use Illuminate\Support\ServiceProvider;
 use App\Repositories\FilmRepositoryInterface;
 use App\Repositories\UserRepositoryInterface;
@@ -28,7 +28,7 @@ class AppServiceProvider extends ServiceProvider
     {
         $this->app->bind(UserRepositoryInterface::class, UserRepository::class);
         $this->app->bind(FilmRepositoryInterface::class, FilmRepository::class);
-        $this->app->bind(MovieRepositoryInterface::class, MovieRepository::class);
+        $this->app->bind(IMDBRepositoryInterface::class, IMDBRepository::class);
         $this->app->bind(GenreRepositoryInterface::class, GenreRepository::class);
         $this->app->bind(ClientInterface::class, Client::class);
     }

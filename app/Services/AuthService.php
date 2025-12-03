@@ -10,10 +10,10 @@ use App\Repositories\UserRepositoryInterface;
 use Illuminate\Support\Facades\Auth;
 use Laravel\Sanctum\NewAccessToken;
 
-class AuthService
+readonly class AuthService
 {
     public function __construct(
-        private readonly UserRepositoryInterface $userRepository,
+        private UserRepositoryInterface $userRepository,
     ) {
     }
 

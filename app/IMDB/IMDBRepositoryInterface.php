@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace App\Movie;
+namespace App\IMDB;
 
 use App\DTO\IMDBMovieDTO;
 
-interface MovieRepositoryInterface
+interface IMDBRepositoryInterface
 {
     public function findById(int $id): ?IMDBMovieDTO;
 }

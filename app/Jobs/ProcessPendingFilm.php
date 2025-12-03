@@ -7,7 +7,7 @@ namespace App\Jobs;
 use App\Models\Film;
 use App\Models\Genre;
 use App\Services\FilmService;
-use App\Movie\MovieRepository;
+use App\IMDB\IMDBRepository;
 use Illuminate\Foundation\Queue\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
